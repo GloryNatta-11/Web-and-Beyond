@@ -199,9 +199,9 @@ export default function App(){
   const L=({to,children,cls=''})=><a href={'#/'+(to==='home'?'':to)} className={cls+(page===to&&!cls?' on':'')}>{children}</a>
   return <>
     <Loader/><div className="glow"/>
-    <header className={'nav '+(sc?'sc':'')}><div className="wrap">
+    <header className={'nav '+(sc||open?'sc':'')}><div className="wrap">
       <Logo/>
-      <button className="burger" onClick={()=>setOpen(!open)} aria-label="Menu">☰</button>
+      <button className="burger" onClick={()=>setOpen(!open)} aria-label="Menu">{open?'✕':'☰'}</button>
       <nav className={'links '+(open?'open':'')}><L to="home">Home</L><L to="about">About us</L><L to="contact" cls="cta">Contact us</L></nav>
     </div></header>
     <main key={page}>{page==='home'?<Home/>:page==='about'?<About/>:<Contact/>}</main>
