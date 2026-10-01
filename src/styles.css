@@ -77,9 +77,9 @@ section{padding:96px 0;position:relative}
 .top{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:36px}
 .arr{display:flex;gap:10px}.arr button{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid var(--line);color:#fff;font-size:1.2rem;cursor:pointer;transition:.2s}.arr button:hover{background:var(--g);transform:scale(1.1)}
 .track{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:20px;scrollbar-width:none}.track::-webkit-scrollbar{display:none}
-.proj{flex:0 0 min(390px,84vw);scroll-snap-align:start;border-radius:26px;background:var(--bg2);border:1px solid var(--line);overflow:hidden;transition:transform .35s,box-shadow .35s}
+.proj{flex:0 0 calc((100% - 44px)/3);min-width:0;scroll-snap-align:start;border-radius:26px;background:var(--bg2);border:1px solid var(--line);overflow:hidden;transition:transform .35s,box-shadow .35s}
 .proj:hover{transform:translateY(-10px);box-shadow:0 30px 60px -30px #A855F7}
-.shot{height:220px;display:grid;place-content:center;text-align:center;padding:20px;font-weight:800;font-size:1.7rem;color:#fff;background:var(--pg);position:relative;overflow:hidden;transition:.5s}
+.shot{height:220px;display:grid;place-content:center;text-align:center;padding:20px;font-weight:800;font-size:1.5rem;color:#fff;background:var(--pg);position:relative;overflow:hidden;transition:.5s}
 .shot:after{content:"";position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.18);right:-60px;top:-60px;transition:transform .6s}
 .proj:hover .shot:after{transform:scale(2.2)}
 .pb{padding:24px}.pb p{margin:8px 0 14px;font-size:.93rem}
@@ -137,3 +137,7 @@ section{padding:70px 0}.f2,.duo{grid-template-columns:1fr}.glow{display:none}}
 .logo .spark{animation:ping2 2s ease-in-out infinite;transform-origin:42px 22px}
 @keyframes draw{from{stroke-dashoffset:60}to{stroke-dashoffset:0}}@keyframes ping2{50%{transform:scale(1.5)}}
 .who{margin-bottom:6px;color:#fff;font-size:1.3rem}
+
+.av{width:112px;height:112px;overflow:hidden}.av img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:1000px){.proj{flex:0 0 calc((100% - 22px)/2)}}
+@media(max-width:640px){.proj{flex:0 0 100%}}

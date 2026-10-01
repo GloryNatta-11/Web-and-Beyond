@@ -54,7 +54,6 @@ const PROJECTS=[
   ['LMS automation','E-learning automation','Certificates, badges and completion tracking automated, cutting manual work by 60%.',['Open LMS','HubSpot','Power BI'],null,null,'linear-gradient(135deg,#A855F7,#EC4899)'],
 ]
 const SKILLS=[['React & Vite',90],['WordPress & Elementor',95],['HubSpot CRM',90],['LMS administration',92],['HTML, CSS & JavaScript',92],['Testing & QA',88]]
-const TECH=['React','WordPress','Elementor','HubSpot CRM','Open LMS','Firebase','WooCommerce','Figma to code','SEO','Power Apps']
 // TODO: replace the sample testimonials with real client quotes
 const QUOTES=[
   ['They turned our rough ideas into a website that looks premium and loads instantly. Customers notice the difference.','Client name','Restaurant owner'],
@@ -84,7 +83,7 @@ function Testimonials(){
 }
 
 function Work(){
-  const t=useRef(null),go=n=>t.current.scrollBy({left:n*412,behavior:'smooth'})
+  const t=useRef(null),go=n=>{const c=t.current.firstElementChild;t.current.scrollBy({left:n*(c.offsetWidth+22),behavior:'smooth'})}
   return <section id="work"><div className="wrap">
     <div className="top"><div><h2>Work we're proud of</h2></div><div className="arr"><button onClick={()=>go(-1)} aria-label="Previous">←</button><button onClick={()=>go(1)} aria-label="Next">→</button></div></div>
     <div className="track" ref={t}>{PROJECTS.map(([s,h,p,tags,url,cta,bg])=><article className="proj" key={h}>
@@ -108,7 +107,6 @@ function Home(){return <div className="page">
           <span className="k">const</span> <span className="f">project</span> = {'{'}<br/>&nbsp;&nbsp;design: <span className="s">"beautiful"</span>,<br/>&nbsp;&nbsp;speed: <span className="s">"instant"</span>,<br/>&nbsp;&nbsp;mobile: <span className="y">true</span>,<br/>&nbsp;&nbsp;results: <span className="s">"growth"</span><br/>{'}'}<br/><span className="k">await</span> <span className="f">launch</span>(project) 🚀</div>
         <div className="fb a">⚛️ React</div><div className="fb b">⭐ 100% responsive</div><div className="fb c">⚡ Lightning fast</div>
       </div></div></section>
-  <div className="mq" aria-hidden="true"><div>{[...TECH,...TECH].map((t,i)=><span key={i}>{t}</span>)}</div></div>
   <section id="services"><div className="wrap"><Reveal className="head"><h2>Everything your brand needs, <span className="grad">under one roof</span></h2><p>From the first sketch to a live website, we handle design, development and the details that keep it running.</p></Reveal>
     <div className="grid">{SERVICES.map(([ic,h,p,c,s],i)=><Reveal key={h} d={(i%4)*90}><Card><div className="ic" style={{'--ci':c,'--cs':s}}>{ic}</div><h3>{h}</h3><p>{p}</p></Card></Reveal>)}</div></div></section>
   <Work/>
@@ -117,25 +115,36 @@ function Home(){return <div className="page">
   <section><div className="wrap"><Reveal className="head" ><h2>Kind words from clients</h2></Reveal><Testimonials/></div></section>
   <CTA/></div>}
 
+function Avatar({src,name,initials,bg}){
+  const [ok,setOk]=useState(true)
+  return <div className="av" style={ok||!bg?undefined:{background:bg}}>{ok?<img src={src} alt={name} onError={()=>setOk(false)}/>:initials}</div>
+}
+
 function Timeline({items}){return <div className="tl">{items.map(([t,h,p])=><div key={h}><em>{t}</em><h3>{h}</h3><p>{p}</p></div>)}</div>}
 
 function About(){return <div className="page">
-  <div className="ph wrap"><h1>Two creators. <span className="grad">One shared vision.</span></h1><p>Web &amp; Beyond is the studio of Maryann Dsouza, content developer, and Glory Natta, AI full stack developer. One shapes the words and visuals, the other turns them into fast, smart websites.</p></div>
+  <div className="ph wrap"><h1>Two sisters. <span className="grad">One shared vision.</span></h1><p>Web &amp; Beyond is the studio of sisters Glory, an AI full stack developer, and Ann, a content developer. One builds, the other creates, and together we turn your ideas into websites and apps people love.</p></div>
   <section><div className="wrap two">
-    <Reveal><h2>Same vision, bigger possibilities</h2><p style={{marginTop:18}}>We started Web &amp; Beyond to give small businesses the quality of a big agency, with the care of people who answer your messages personally. You tell us the story. Maryann crafts the content and imagery, Glory designs, builds and launches the site.</p><p style={{marginTop:14}}>Every site goes through a QA engineer's checklist before it meets your customers: cross-browser, cross-device, forms, speed and accessibility.</p></Reveal>
-    <Reveal d={150}><div className="duo"><Card><div className="av" style={{background:'linear-gradient(135deg,#F59E0B,#EC4899)'}}>MD</div><h3>Maryann Dsouza</h3><p>Content Developer. 10+ years creating text, images and designs that tell your story.</p></Card><Card><div className="av">GN</div><h3>Glory Natta</h3><p>AI Full Stack Developer. Frontend, WordPress, HubSpot and AI-powered builds.</p></Card></div></Reveal>
+    <Reveal><h2>Our <span className="grad">story</span></h2>
+      <p style={{marginTop:18}}>We are two sisters with one goal: to help people and businesses who want a trendy, modern presence online, without the stress and without the agency price tag.</p>
+      <p style={{marginTop:14}}>Maybe you need a sleek website, a powerful web app, an event invite, a flyer or a menu card. Whatever it is, bring us your idea. Glory builds it, Ann shapes the words and visuals, and together we turn it into something beautiful that works.</p>
+      <p style={{marginTop:14,color:'#fff',fontWeight:700,fontSize:'1.15rem'}}>Bring your idea. We'll turn it into reality.</p>
+      <div className="tags" style={{marginTop:20,gap:10}}>{['Trendy & modern','Built with care','Personal support'].map(t=><span key={t} style={{padding:'9px 18px',fontSize:'.9rem'}}>{t}</span>)}</div></Reveal>
+    <Reveal d={150}><div className="duo">
+      <Card><Avatar src="/glory.jpg" name="Glory" initials="G"/><h3>Glory</h3><p>AI Full Stack Developer. Frontend, WordPress, HubSpot and AI-powered builds.</p></Card>
+      <Card><Avatar src="/ann.jpg" name="Ann" initials="A" bg="linear-gradient(135deg,#F59E0B,#EC4899)"/><h3>Ann</h3><p>Content Developer. 10+ years creating text, images and designs that tell your story.</p></Card></div></Reveal>
   </div></section>
-  <section><div className="wrap">
+  <section style={{paddingTop:0}}><div className="wrap">
     <Reveal className="head"><h2>Experience behind <span className="grad">every project</span></h2></Reveal>
     <div className="two" style={{alignItems:'start'}}>
-      <Reveal><h3 className="who">Maryann Dsouza · Content Developer</h3><Timeline items={[
-        ['10+ YEARS','Content developer','Website copy, product and brand text, image editing and Canva designs for businesses across industries.'],
-        ['2 YEARS','Freelance content developer','Content and creative assets for client websites, flyers, visiting cards, menus and event templates at Web & Beyond.']]}/></Reveal>
-      <Reveal d={150}><h3 className="who">Glory Natta · AI Full Stack Developer</h3><Timeline items={[
-        ['5+ YEARS','WordPress developer & LMS administrator','80+ sites built with zero critical defects at launch, safe migrations and 60% less manual LMS work.'],
+      <Reveal><h3 className="who">Glory · AI Full Stack Developer</h3><Timeline items={[
         ['2 YEARS','Freelance AI full stack developer','React, Vite and Firebase apps, client websites and automation tools built on the Claude AI API.'],
+        ['5+ YEARS','WordPress developer & LMS administrator','80+ sites built with zero critical defects at launch, safe migrations and 60% less manual LMS work.'],
         ['JAN 2024 TO NOW','Power Apps developer','Canvas apps, Power Automate flows and Power BI dashboards.'],
         ['2020 TO 2023','QA engineer','Selenium, Postman and Jira testing for e-commerce platforms.']]}/></Reveal>
+      <Reveal d={150}><h3 className="who">Ann · Content Developer</h3><Timeline items={[
+        ['10+ YEARS','Content developer','Website copy, product and brand text, image editing and Canva designs for businesses across industries.'],
+        ['2 YEARS','Freelance content developer','Content and creative assets for client websites, flyers, visiting cards, menus and event templates at Web & Beyond.']]}/></Reveal>
     </div></div></section>
   <section style={{paddingTop:0}}><div className="wrap"><Reveal className="head"><h2>Tools we work with</h2></Reveal>
     <Reveal><div className="tags" style={{gap:10}}>{['React','Vite','Firebase','WordPress','Elementor','ACF','WooCommerce','HubSpot','Open LMS','Figma','Canva','Power BI','Claude AI API','Content writing','Image design'].map(t=><span key={t} style={{padding:'9px 18px',fontSize:'.9rem'}}>{t}</span>)}</div>
@@ -147,13 +156,13 @@ function Contact(){
   async function submit(e){
     e.preventDefault();setSt('sending')
     const d=new FormData(e.target)
-       try{
-     d.append('access_key','8989f9ec-2269-4f88-8819-8837a94f3184')
-     const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:d})
-     const j=await r.json()
-     if(!j.success)throw 0
-     setSt('ok')
-   }catch{setSt('err')}
+    try{
+      d.append('access_key','8989f9ec-2269-4f88-8819-8837a94f3184')
+      const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:d})
+      const j=await r.json()
+      if(!j.success)throw 0
+      setSt('ok')
+    }catch{setSt('err')}
   }
   return <div className="page">
     <div className="ph wrap"><h1>Tell us about <span className="grad">your project</span></h1><p>Fill in the form and we'll get back to you within one working day.</p></div>
