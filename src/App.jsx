@@ -131,8 +131,8 @@ function About(){return <div className="page">
       <p style={{marginTop:14,color:'#fff',fontWeight:700,fontSize:'1.15rem'}}>Bring your idea. We'll turn it into reality.</p>
       <div className="tags" style={{marginTop:20,gap:10}}>{['Trendy & modern','Built with care','Personal support'].map(t=><span key={t} style={{padding:'9px 18px',fontSize:'.9rem'}}>{t}</span>)}</div></Reveal>
     <Reveal d={150}><div className="duo">
-      <Card><Avatar src="/glory.jpg" name="Glory" initials="G"/><h3>Glory</h3><p>AI Full Stack Developer. Frontend, WordPress, HubSpot and AI-powered builds.</p></Card>
-      <Card><Avatar src="/ann.jpg" name="Ann" initials="A" bg="linear-gradient(135deg,#F59E0B,#EC4899)"/><h3>Ann</h3><p>Content Developer. 10+ years creating text, images and designs that tell your story.</p></Card></div></Reveal>
+      <Card><Avatar src="/glory.png" name="Glory" initials="G"/><h3>Glory</h3><p>AI Full Stack Developer. Frontend, WordPress, HubSpot and AI-powered builds.</p></Card>
+      <Card><Avatar src="/ann.png" name="Ann" initials="A" bg="linear-gradient(135deg,#F59E0B,#EC4899)"/><h3>Ann</h3><p>Content Developer. 10+ years creating text, images and designs that tell your story.</p></Card></div></Reveal>
   </div></section>
   <section style={{paddingTop:0}}><div className="wrap">
     <Reveal className="head"><h2>Experience behind <span className="grad">every project</span></h2></Reveal>
