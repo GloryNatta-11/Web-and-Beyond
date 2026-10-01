@@ -168,8 +168,6 @@ function Contact(){
     <div className="ph wrap"><h1>Tell us about <span className="grad">your project</span></h1><p>Fill in the form and we'll get back to you within one working day.</p></div>
     <section style={{paddingTop:40}}><div className="wrap cg">
       <div className="info">
-        <a href="tel:+919494181881"><div className="ic" style={{'--ci':'#6366F1','--cs':'#4F46E5'}}>📞</div><div><small>Call us</small>{PHONE}</div></a>
-        <a href={WA} target="_blank" rel="noopener"><div className="ic" style={{'--ci':'#10B981','--cs':'#059669'}}>💬</div><div><small>WhatsApp</small>{PHONE}</div></a>
         <a href={'mailto:'+EMAIL}><div className="ic" style={{'--ci':'#EC4899','--cs':'#DB2777'}}>✉️</div><div><small>Email</small>{EMAIL}</div></a>
         <a href="https://www.linkedin.com/in/glory-n-6b01923a3" target="_blank" rel="noopener"><div className="ic" style={{'--ci':'#3B82F6','--cs':'#2563EB'}}>in</div><div><small>LinkedIn</small>Connect with Glory</div></a>
       </div>
@@ -210,6 +208,6 @@ export default function App(){
     <footer><div className="wrap"><div><Logo/><p style={{marginTop:12}}>We design. We build. You grow.</p></div>
       <div><a href="#/">Home</a><br/><a href="#/about">About us</a><br/><a href="#/contact">Contact us</a></div>
       <div>{EMAIL}</div><small>© {new Date().getFullYear()} Web &amp; Beyond. All rights reserved.</small></div></footer>
-    <a className="wa" href={WA} target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+    
   </>
 }
