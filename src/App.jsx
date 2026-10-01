@@ -147,10 +147,13 @@ function Contact(){
   async function submit(e){
     e.preventDefault();setSt('sending')
     const d=new FormData(e.target)
-    try{
-      const r=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(d).toString()})
-      if(!r.ok)throw 0;setSt('ok')
-    }catch{setSt('err')}
+       try{
+     d.append('access_key','8989f9ec-2269-4f88-8819-8837a94f3184')
+     const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:d})
+     const j=await r.json()
+     if(!j.success)throw 0
+     setSt('ok')
+   }catch{setSt('err')}
   }
   return <div className="page">
     <div className="ph wrap"><h1>Tell us about <span className="grad">your project</span></h1><p>Fill in the form and we'll get back to you within one working day.</p></div>
